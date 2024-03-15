@@ -7,13 +7,20 @@
 
 ### Running
 
-1. TODO
+1. After compiling the program, run the program from CLI, using the flags.
+   eg. ./hubspot-call_contact --apikey=YOUR_API_KEY --recent
+   Including the `--recent` flag will only pull recent calls, if no calls have been recently processed, it will grab all calls
+2. You may ignore the `--recent `flag to process all calls, every time added
 
+### Installing (Linux)
 
-### Configuration
+1. Copy the binary file & storage.json or make a storage.json
 
-Modes
+   ```
+   {
+    "latest_call_timestamp": "2022-11-09T23:53:16.805Z"
+   }
+   ```
+2. Add the path to the binary w/ flags to your cron file.
 
-SMDR - Runs local TCP listener for SMDR logs from Zultys (requires backend change by Zultys to include call direction
-
-MXReport FTP - Runs local FTP server to receive logs
+   `*/5 * * * * bash /opt/call_contact/call-contact_linux --apikey=APIKEY --recent`
